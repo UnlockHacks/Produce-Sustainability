@@ -91,11 +91,12 @@ async function updateChart() {
     preds.push(model(d.X[i]))
   }
   //extrapolation continuing from highest val
-  for (var i = d.X[d.X.length-1][0]+1; i < d.X[d.X.length-1][0] + 3; i++) {
+  numPred = 2;//how many weeks forward to extrapolate
+  for (var i = d.X[d.X.length-1][0]+1; i < d.X[d.X.length-1][0] + 1 + numPred; i++) {
     preds.push(model([i, i**2, i**3]))
   }
   setData(myChart, range(0,preds.length), preds, 1);
-  predictionMsg(d.X[d.X.length-1][0],preds.slice(preds.length-2));
+  predictionMsg(d.X.length+1,preds.slice(preds.length-numPred));
 }
 //write out the prediction
 function predictionMsg(week, amount) {

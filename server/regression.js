@@ -1,7 +1,7 @@
 //hyperparameters machine learning model
 var Xsize = 3;//# input params
 var alpha = 0.01;//learning rate
-var lambda = 10;//regularization term
+var lambda = 1;//regularization term
 var steps = 1500;//gradient steps
 
 //linear/polynomial model
