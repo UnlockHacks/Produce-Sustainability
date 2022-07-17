@@ -67,6 +67,11 @@ function getData(item) {
   var allSales = document.getElementsByClassName("item"+item);
   for (var i = 0; i < allSales.length; i++) {
     X.push([i, i**2, i**3]);//polynomial reg
+    //interpolate missing values
+    if (allSales[i].value == "" && i > 0){
+      console.log("filling in value")
+      allSales[i].value = allSales[i-1].value;
+    }
     y.push(parseInt(allSales[i].value));
   }
   return {X, y}
@@ -76,7 +81,7 @@ function getData(item) {
 async function updateChart() {
   var d = getData(0)
   //add points to chart
-  setData(myChart, range(0,d.X.length), d.y, 0)
+  setData(myChart, range(0,d.X[d.X.length-1][0]), d.y, 0)
   //add ML prediction to chart
   await getModel(d.X, d.y);
   console.log("model is update")
@@ -90,6 +95,15 @@ async function updateChart() {
     preds.push(model([i, i**2, i**3]))
   }
   setData(myChart, range(0,preds.length), preds, 1);
+  predictionMsg(d.X[d.X.length-1][0],preds.slice(preds.length-2));
+}
+//write out the prediction
+function predictionMsg(week, amount) {
+  var ele = document.getElementById("prediction");
+  ele.innerText = "";
+  for (var i = 0; i < amount.length; i++) {
+    ele.innerText += `You are predicted to sell ${Math.max(0,Math.round(amount[i]))} products in week ${week + i}\n`;
+  }
 }
 //sequential array from x to y
 function range(start, end) {
@@ -99,3 +113,4 @@ function range(start, end) {
   }
   return r;
 }
+

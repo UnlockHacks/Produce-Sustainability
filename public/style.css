@@ -12,7 +12,7 @@ body {
 
 }
 
-li, a, button, td {
+li, a, button {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -20,6 +20,11 @@ li, a, button, td {
   text-decoration: none;
 }
 
+p, td {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
 
 @font-face {
   font-family: Josefin;
@@ -93,11 +98,12 @@ h1 {
   position:relative;
   width:40vh;
   height:40vh;
+  left: -2vh;
   animation: bounce 3s infinite;
 }
 #img2 {
   position:relative;
-  left:-20vh;
+  left:-5vh;
   width:20vh;
   height:20vh;
   animation: bounce 3s infinite;
