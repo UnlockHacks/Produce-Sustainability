@@ -2,6 +2,7 @@
 var Xsize = 3;//# input params
 var alpha = 0.01;//learning rate
 var lambda = 10;//regularization term
+var steps = 1000;//gradient steps
 
 //linear/polynomial model
 function hypothesis(weights, bias) {
@@ -62,7 +63,7 @@ function gradDescent(X, y) {
   var bias = 0;
   console.log("new training")
   var oldCost = Infinity;
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < steps; i++) {
     //grad descent
     var JPrime = costPrime(X, y, weights, bias);
     for (var j = 0; j < JPrime.length-1; j++) {
@@ -73,6 +74,7 @@ function gradDescent(X, y) {
     //console.log("cost: " + cost(X, y, weights, bias))
     if (cost(X, y, weights, bias) > oldCost) {
       learningRate /= 2;
+      i -= steps - i;
       console.log("runaway ascent, decreasing alpha")
     }
     oldCost = cost(X, y, weights, bias)
