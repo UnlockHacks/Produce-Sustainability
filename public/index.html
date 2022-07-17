@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Produce Sustainability</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href = "icon.png" rel = "icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img  id="logo" href=#home src ="pictures/updated_logo.png">
+
+        <ul class="nav__links">
+          <li><a href = #home>Home</a></li>
+          <li><a href = #about>About</a></li>
+          <li><a href = #app>Use</a></li>
+          <li><a href ="https://www.youtube.com/watch?v=p7YXXieghto" >Demo</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id = "home">
+      
+      
+      <div class = "container">
+        <div>
+          <h1> Your next stop: <br> Sustainability</h1> 
+          <h3 id = "paragraph-text" >  Click the button to make your store the most sustainable it can possibly be!</h3>
+          <a class = "button" href = #app>Try it out here!</a>
+        </div>
+        <div id="front-img">
+          <div id="hero-img">
+            <img id = "img1" src = "pictures/hero_image.png"></img>
+            <img id = "img2" src = "pictures/icon.png"></img>
+        </div>
+      </div>
+    </section>
+
+    <section id = "about">
+      <div id=store-img>
+        <img src = "pictures/store_image_new.png"></img>
+      </div>
+      
+      <div class = "container container2">
+        <h1>The story behind <br> Produce Sustainability</h1>
+         <p id = "paragraph-text2" >Produce Sustainable is a website that helps grocers (or any shopkeeper that stocks perishable items) produce sustainability for their own store! Our machine learning model takes in inputted information described below to give you the best recommendations for how much perishable you should purchase per week to minimize food waste. Get started below on your journey to sustainability and be a leading example for our fight against food waste!
+        </p> 
+      </div> 
+    </section>
+    
+    <!-- INTERFACE FOR DATA STUFF -->
+    <section id = "app">
+      <h1>Calculate Projected Demand</h1>
+      <div class = "app-container">
+        <div class='form-container'>
+          <table  class="data-labelling">
+            <tr>
+              <td>Previous Product Sales</td>
+            </tr>
+          </table>
+          
+          <table>
+            <tr>
+              <td>
+                <button class="button" onclick="addWeek()">Add Week</button>
+              </td>
+              <td>
+                <button class="button" onclick="updateChart()">Predict Demand</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="chart-container">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section id = "get_database_data">
+<!--       
+    </section> -->
+
+      <script src="getDatabaseData.js"></script>
+      <script src="calibrateChart.js"></script>
+      <script src="app.js"></script>
+    </section>
+  </body>
+
+
+  
+</html>
